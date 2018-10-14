@@ -1,25 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import List from "./List";
+import Button from "./Button";
+
+const buildItems = () => {
+  let items = [];
+  for (let i = 0; i < 20000; i++) {
+    items.push({ name: i });
+  }
+  return items;
+};
 
 class App extends Component {
+  state = {
+    items: buildItems()
+  };
+
+  reRender = () => {
+    this.setState({ items: this.state.items });
+  };
+
   render() {
+    const { items } = this.state;
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Button
+          onClick={() => {
+            this.setState({ items: this.state.items });
+          }}
+          style={{ margin: 2, backgroundColor: "black", color: "white" }}
+        >
+          Render
+        </Button>
+        <List items={items} />
       </div>
     );
   }
