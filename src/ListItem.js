@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 
 class ListItem extends PureComponent {
   render() {
@@ -8,8 +8,8 @@ class ListItem extends PureComponent {
         style={{
           padding: 10,
           margin: 2,
-          backgroundColor: "gray",
-          color: "white"
+          backgroundColor: 'darkgreen',
+          color: 'white',
         }}
       >
         {item.name}

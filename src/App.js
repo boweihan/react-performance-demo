@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import List from "./List";
-import Button from "./Button";
+import React, { Component } from 'react';
+import List from './List';
+import Button from './Button';
 
 const buildItems = () => {
   let items = [];
@@ -10,13 +10,24 @@ const buildItems = () => {
   return items;
 };
 
+const buildItemsAdditions = () => {
+  let items = [];
+  for (let i = 0; i < 20000; i++) {
+    items.push({ name: i });
+    if (i === 0) {
+      items.push({ name: i + 'boop' });
+    }
+  }
+  return items;
+};
+
 class App extends Component {
   state = {
-    items: buildItems()
+    items: buildItems(),
   };
 
   reRender = () => {
-    this.setState({ items: this.state.items });
+    this.setState({ items: buildItemsAdditions() });
   };
 
   render() {
@@ -28,7 +39,7 @@ class App extends Component {
           onClick={() => {
             this.setState({ items: this.state.items });
           }}
-          style={{ margin: 2, backgroundColor: "black", color: "white" }}
+          style={{ margin: 2, backgroundColor: 'black', color: 'white' }}
         >
           Render
         </Button>
